@@ -1,9 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
-
-import { Button } from 'semantic-ui-react'
+import {
+  CardMeta,
+  CardHeader,
+  CardDescription,
+  CardContent,
+  Card,
+  Icon,
+  Image,
+Button } from 'semantic-ui-react'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import PostCard from './components/PostCard/PostCard';
 
 function App() {
 
@@ -27,7 +35,7 @@ function App() {
   return (
     <div className="App">
    
-   {posts.map((post)=> <p>{post.title}</p>)}
+   {posts.map((post)=> <PostCard post={post}/>)}
   
   </div>
   );
