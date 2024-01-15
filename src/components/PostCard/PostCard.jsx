@@ -22,10 +22,13 @@ export default function PostCard(props) {
       </CardDescription>
     </CardContent>
     <CardContent extra>
-      <a>
-        <Icon name='user' />
-        22 Friends
-      </a>
+        <Button onClick={()=>{
+            props.onDelete(props.post.id);
+        }} 
+        
+        basic color="red">
+            Kaldır
+        </Button>
     </CardContent>
   </Card>
   )

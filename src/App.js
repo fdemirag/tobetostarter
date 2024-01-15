@@ -29,13 +29,20 @@ function App() {
     {
       console.log(e);
     }
-    
-    }
 
-  return (
+  }
+    const removePost = (id) => {
+      setPosts(posts.filter(i=>i.id !== id));
+    }
+    
+
+      
+
+  return ( 
     <div className="App">
    
-   {posts.map((post)=> <PostCard post={post}/>)}
+   {posts.map((post)=> <PostCard 
+   onDelete={removePost} post={post}/>)}
   
   </div>
   );
