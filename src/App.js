@@ -12,6 +12,11 @@ Button } from 'semantic-ui-react'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import PostCard from './components/PostCard/PostCard';
+import PostService from './services/postService';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage/HomePage';
+import Posts from './pages/Posts/Posts';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
 
@@ -23,7 +28,9 @@ function App() {
  
   const fetchItems = async () => {
     try {
-      let response = await axios.get("https://jsonplaceholder.typicode.com/posts")
+      
+      let response = await PostService.getAll();
+      
      setPosts(response.data);
     }catch (e)
     {
@@ -36,16 +43,27 @@ function App() {
     }
     
 
-      
+    
 
   return ( 
-    <div className="App">
-   
-   {posts.map((post)=> <PostCard 
-   onDelete={removePost} post={post}/>)}
-  
-  </div>
+   <BrowserRouter>
+  <Routes>
+    <Route path="/" element={<HomePage/>}/>
+    <Route path="/homepage" element={<HomePage/>}/>
+    <Route path="/posts" element={<Posts/>}/>
+
+    <Route path="*" element={<NotFound/>}/>
+
+    </Routes>   
+   </BrowserRouter>
   );
 }
 
+/*<div className="App">
+   
+{posts.map((post)=> <PostCard 
+onDelete={removePost} post={post}/>)}
+ );
+
+</div> */
 export default App;
