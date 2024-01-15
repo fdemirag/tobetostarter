@@ -17,6 +17,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import Posts from './pages/Posts/Posts';
 import NotFound from './pages/NotFound/NotFound';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
 
@@ -46,16 +47,18 @@ function App() {
     
 
   return ( 
-   <BrowserRouter>
-  <Routes>
+   <>
+     <Navbar/>
+      <Routes>
     <Route path="/" element={<HomePage/>}/>
     <Route path="/homepage" element={<HomePage/>}/>
     <Route path="/posts" element={<Posts/>}/>
-
     <Route path="*" element={<NotFound/>}/>
-
     </Routes>   
-   </BrowserRouter>
+   </>
+  
+  
+  
   );
 }
 
