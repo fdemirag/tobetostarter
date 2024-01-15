@@ -1,24 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
 
+import { Button } from 'semantic-ui-react'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
 function App() {
+
+  const [posts, setPosts] = useState([]);
+
+  useEffect (() => {
+   fetchItems();
+  }, [])
+ 
+  const fetchItems = async () => {
+    try {
+      let response = await axios.get("https://jsonplaceholder.typicode.com/posts")
+     setPosts(response.data);
+    }catch (e)
+    {
+      console.log(e);
+    }
+    
+    }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   
+   {posts.map((post)=> <p>{post.title}</p>)}
+  
+  </div>
   );
 }
 
