@@ -18,6 +18,7 @@ import HomePage from './pages/HomePage/HomePage';
 import Posts from './pages/Posts/Posts';
 import NotFound from './pages/NotFound/NotFound';
 import Navbar from './components/Navbar/Navbar';
+import Login from './pages/Login/Login';
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
     <Route path="/" element={<HomePage/>}/>
     <Route path="/homepage" element={<HomePage/>}/>
     <Route path="/posts" element={<Posts/>}/>
+    <Route path="/login" element={<Login/>}/>
     <Route path="*" element={<NotFound/>}/>
     </Routes>   
    </>
