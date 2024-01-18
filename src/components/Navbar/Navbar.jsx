@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Menu } from 'semantic-ui-react'
-import { AuthContext } from '../../contexts/authContext';
+import { useAuth } from '../../contexts/authContext';
 
 export default function Navbar() {
 
     const navigate = useNavigate();
-    const authContext =useContext(AuthContext);
+    const authContext =useAuth();
    
   return (
     <Menu>
